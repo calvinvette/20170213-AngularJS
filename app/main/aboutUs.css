@@ -1,0 +1,26 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.company_header {
+  display: block;
+}
+.company_name {
+  display: block
+}
+.company_street {
+  display: block;
+}
+.company_city {
+  display: block
+}
+.active {
+  background-color: steelblue;
+  color: red;
+  border: 1px;
+}
+.inactive {
+  background-color: grey;
+  color: grey;
+  border: 1px;
+}

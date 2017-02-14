@@ -1,0 +1,16 @@
+<h1>Search for products</h1>
+
+<div id="searchedTerm" class="text-primary bg-primary">You're searching for '{{searchString}}'</div>
+Enter all or part of the description:
+<input ng-model="searchString" name="search" type="text" id="search" />
+<button id="go" class="btn btn-primary">Search</button>
+
+<div class="container">
+  <div ng-repeat="product in products | filter:{ productName:searchString }" class="row">
+    <nw-product-overview></nw-product-overview>
+  </div>
+
+  <div class="row">
+    <div class="text-success bg-success">{{ (products | filter:{ productName:searchString }).length }} products found.</div>
+  </div>
+</div>

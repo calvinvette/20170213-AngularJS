@@ -1,0 +1,16 @@
+<h1>Browse the Product Catalog</h1> Category:
+<select ng-model='category' ng-options="category.categoryName for category in categories" name="category" id="category">
+  <option value="">All categories</option>
+</select>
+
+<div class="table">
+  <section class="row">
+    <section ng-repeat="cat in categories" ng-show="cat == category || ! category">
+      <h1>{{ cat.categoryName }}</h1>
+      <p>{{ cat.description }}</p>
+      <div ng-repeat="product in products | filter: {categoryID: cat.categoryID}:true | orderBy:'productName'" class="row">
+        <nw-product-overview></nw-product-overview>
+      </div>
+    </section>
+  </section>
+</div>

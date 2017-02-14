@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="/app/node_modules/angular/angular.js"></script>
+
+  <script src="/app/main/mainModule.js"></script>
+  <script src="/app/main/aboutUsController.js"></script>
+  <script src="/app/main/mainProductController.js"></script>
+
+  <link href="/app/main/aboutUs.css" rel="stylesheet"/>
+</head>
+<body ng-app="mainModule">
+<div ng-controller="aboutUsController">
+  <div class="company_header">
+  <span class="company_name">{{company.name}}</span>
+  <span class="company_street">{{company.streetAddress}}</span>
+  <span class="company_city">{{company.city}}</span>
+</div>
+
+<br/>
+Today's Date: {{today}}<br/>
+Today's Date: {{today | date:"fullDate"}}<br/>
+Today's Date: {{today | date:"shortDate"}}<br/>
+Today's Date: {{today | date:"longDate"}}<br/>
+Today's Date: {{today | date:"mediumDate"}}<br/>
+
+<section>
+  <h3>Map of our headquarters</h3>
+  <img height="600" width="600" ng-attr-src="https://maps.googleapis.com/maps/api/staticmap?markers={{company.streetAddress}} {{company.city}}&size=600x600&maptype=hybrid"/>
+</section>
+<button ng-click="clickMe()">Click Me!</button>
+</div>
+
+<div ng-controller="mainProductController">
+  <div ng-repeat="product in topProducts" class="item text-center" ng-class="{'active':$first, 'inactive':!$first}">
+    <a ng-attr-href="product/index.html#/{{product.productID}}">
+      <img ng-attr-src="/assets/img/productImages/{{product.productID}}.jpg" class="center-block"
+        ng-attr-alt="{{product.productName}}">
+        {{product.productName}}
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
