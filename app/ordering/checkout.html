@@ -13,6 +13,7 @@
 
   <script src="/app/ordering/OrderingModule.js"></script>
   <script src="/app/ordering/CheckoutController.js"></script>
+  <script src="/app/ordering/ShipViaController.js"></script>
 
 </head>
 
@@ -125,12 +126,9 @@
     <section>
       <fieldset>
         <legend>How shall we ship it?</legend>
-        <div class="form-group">
-          <label for="shipVia" class="control-label">Shipping method:</label>
-          <select name="shipVia" class="form-control">
-            <option>Next Day - $100</option>
-            <option>2nd Day - $50</option>
-            <option>Ground - $0</option>
+        <div class="form-group" ng-controller="ShipViaController">
+          <label for="shipVia" class="control-label">Shipping method:</label> {{shipVia}}
+          <select name="shipVia" class="form-control" ng-model="shipVia" ng-options="option.name + ': $' + option.price for option in shipViaOptions">
           </select>
         </div>
       </fieldset>
@@ -176,7 +174,7 @@
         </div>
       </fieldset>
 
-      <button class="btn btn-primary" ng-click="processOrder()">Place Order" </button>
+      <button class="btn btn-primary" ng-click="processOrder()">Place Order</button>
     </section>
   </main>
   <footer class="row"><span>Copyright © Northwind Traders</span>

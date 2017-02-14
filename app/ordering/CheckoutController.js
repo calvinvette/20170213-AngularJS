@@ -20,6 +20,7 @@
       quantity : 2
     }];
     $scope.cartTotal = 0;
+    $scope.shipVia = null;
     $scope.$watch('cart', function() {
       $scope.cartTotal = getCartTotal($scope.cart);
     }, true);
@@ -39,6 +40,7 @@
         console.log(item);
       }
       console.log("Total: " + $scope.cartTotal);
+      console.log("Ship Via: " + $scope.shipVia.name + "@" + $scope.shipVia.price);
       $scope.cart = [];
     }
   }
