@@ -87,9 +87,11 @@
       </fieldset>
       <input type="submit" class="btn btn-primary" value="Create User" />
     </form>
-    <p class="alert alert-success">
+    <p class="alert alert-danger" ng-show="errorMessage != null && errorMessage.length > 0">
+      {{errorMessage}}
     </p>
-    <p class="alert alert-danger">
+    <p class="alert alert-success" ng-show="successMessage != null && successMessage.length > 0">
+      {{successMessage}}
     </p>
   </div>
 </main>
