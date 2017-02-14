@@ -13,9 +13,9 @@
 <body ng-app="mainModule">
 <div ng-controller="aboutUsController">
   <div class="company_header">
-  <span class="company_name">{{company.name}}</span>
-  <span class="company_street">{{company.streetAddress}}</span>
-  <span class="company_city">{{company.city}}</span>
+  <span class="company_name">{{::company.name}}</span>
+  <span class="company_street">{{::company.streetAddress}}</span>
+  <span class="company_city">{{::company.city}}</span>
 </div>
 
 <br/>
