@@ -1,4 +1,4 @@
 (function() {
   angular.module("AuthModule", []);
-  console.log("LoginModule Loaded");
+  console.log("AuthModule Loaded");
 })();
