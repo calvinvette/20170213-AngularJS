@@ -1,7 +1,7 @@
 (function() {
   angular.module("OrderingModule").controller("CheckoutController", CheckoutController);
   CheckoutController.$inject = ['$scope'];
-  // console.log("CheckoutController assigned");
+  console.log("CheckoutController assigned");
   function CheckoutController($scope) {
     console.log("CheckoutController Loaded");
     $scope.cart = [ {
@@ -50,5 +50,5 @@
     }
     return sum;
   }
-  // console.log("CheckoutController End IIFE");
+  console.log("CheckoutController End IIFE");
 })();
