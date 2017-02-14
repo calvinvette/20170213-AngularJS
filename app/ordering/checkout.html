@@ -83,7 +83,7 @@
             <td><a ng-attr-href="/product/{{item.product.productId}}">{{item.product.name}}</a></td>
             <td>{{item.product.price}}</td>
             <td>
-              <input type="number" ng-attr-value="{{item.quantity}}">
+              <input type="number" ng-model="item.quantity">
             </td>
             <td>{{item.quantity * item.product.price}}</td>
             <td><a><span class="glyphicon glyphicon-trash" ng-click="removeFromCart(item.product)"></span></a></td>

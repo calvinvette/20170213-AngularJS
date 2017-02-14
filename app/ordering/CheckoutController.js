@@ -38,6 +38,7 @@
         var item = $scope.cart[idx];
         console.log(item);
       }
+      console.log("Total: " + $scope.cartTotal);
       $scope.cart = [];
     }
   }
