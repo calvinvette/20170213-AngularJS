@@ -1,7 +1,7 @@
 (function() {
   angular.module("OrderingModule").controller("CheckoutController", CheckoutController);
   CheckoutController.$inject = ['$scope'];
-  console.log("CheckoutController assigned");
+  // console.log("CheckoutController assigned");
   function CheckoutController($scope) {
     console.log("CheckoutController Loaded");
     $scope.cart = [ {
@@ -25,13 +25,13 @@
       $scope.cartTotal = getCartTotal($scope.cart);
     }, true);
     $scope.$on("ShipViaChangeEvent", function(evt, data) {
-      console.log("Got shipViaChange!");
-      console.log(evt);
-      console.log(data);
+      // console.log("Got shipViaChange!");
+      // console.log(evt);
+      // console.log(data);
       $scope.shipVia = data;
     });
     $scope.$on("CustomerAddressChangedEvent", function(evt, data) {
-      console.log("Got CustomerAddressChanged!");
+      // console.log("Got CustomerAddressChanged!");
       $scope.customer = data;
     });
     $scope.removeFromCart = function(product) {
@@ -67,5 +67,5 @@
     }
     return sum;
   }
-  console.log("CheckoutController End IIFE");
+  // console.log("CheckoutController End IIFE");
 })();

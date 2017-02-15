@@ -1,7 +1,7 @@
 (function() {
   angular.module("OrderingModule").controller("ShipViaController", ShipViaController);
   ShipViaController.$inject = ['$scope'];
-  console.log("ShipViaController assigned");
+  // console.log("ShipViaController assigned");
   function ShipViaController($scope) {
     console.log("ShipViaController Loaded");
     $scope.shipViaOptions = [
@@ -11,11 +11,11 @@
     ]
     $scope.shipVia = null;
     $scope.$watch('shipVia', function() {
-      console.log("shipVia is now: ");
-      console.log($scope.shipVia);
+      // console.log("shipVia is now: ");
+      // console.log($scope.shipVia);
       // This will stay local to the inner controller, it won't propagate up to the containing controller (CheckoutController)
      $scope.$emit("ShipViaChangeEvent", $scope.shipVia);
     });
   }
-  console.log("ShipViaController End IIFE");
+  // console.log("ShipViaController End IIFE");
 })();
