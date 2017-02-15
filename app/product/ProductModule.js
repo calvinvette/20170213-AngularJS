@@ -1,1 +1,1 @@
-var mod=angular.module("ProductModule", []);
+var mod=angular.module("ProductModule", ['SharedModule']);
