@@ -81,7 +81,7 @@ Category:
       <div class="col-sm-2">Price</div>
     </div>
 
-    <div class="row" ng-repeat="product in products">
+    <div class="row" ng-repeat="product in products | filter: {productName: searchString}:false">
       <div class="col-sm-2"><a href="/app/product/productDetail.html">
         <img class="img-responsive" ng-attr-src="/assets/img/ProductImages/{{product.productID}}.jpg"></a></div>
       <div class="col-sm-5"><a href="/app/product/productDetail.html" class="ng-binding">
