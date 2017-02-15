@@ -13,7 +13,7 @@
     $scope.login = function() {
       console.log("Logging in user: " + $scope.userName);
       var validUserNamePassword = ($scope.password == "superSecret");
-      console.log("Valid: " + validUserNamePassword);
+      console.log("Valid?: " + validUserNamePassword);
       if (validUserNamePassword) {
         $scope.successMessage = "Successfully Logged In";
         $scope.errorMessage = "";

@@ -24,6 +24,16 @@
     $scope.$watch('cart', function() {
       $scope.cartTotal = getCartTotal($scope.cart);
     }, true);
+    $scope.$on("ShipViaChangeEvent", function(evt, data) {
+      console.log("Got shipViaChange!");
+      console.log(evt);
+      console.log(data);
+      $scope.shipVia = data;
+    });
+    $scope.$on("CustomerAddressChangedEvent", function(evt, data) {
+      console.log("Got CustomerAddressChanged!");
+      $scope.customer = data;
+    });
     $scope.removeFromCart = function(product) {
       console.log("Removing " + product.name + " from cart");
       for (var idx in $scope.cart) {
@@ -35,6 +45,11 @@
     }
     $scope.processOrder = function() {
       console.log("Processing Order...");
+      console.log("Ship To: " + $scope.customer.contactName);
+      console.log("\t" + $scope.customer.address);
+      console.log("\t" + $scope.customer.city);
+      console.log("\t" + $scope.customer.region);
+      console.log("\t" + $scope.customer.country);
       for (var idx in $scope.cart) {
         var item = $scope.cart[idx];
         console.log(item);
