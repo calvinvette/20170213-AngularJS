@@ -7,8 +7,14 @@
   <script src="/app/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/app/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="/assets/css/site.css"/>
+
+  <script src="/app/node_modules/angular/angular.js"></script>
+
+  <script src="/app/product/ProductModule.js"></script>
+  <script src="/app/product/ProductSearchController.js"></script>
+
 </head>
-<body class="container">
+<body class="container" ng-app="ProductModule">
 <div>
   <nav class="navbar navbar-default navbar-fixed-top">
     <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar">
@@ -41,7 +47,7 @@
     </h1>
   </header>
 </div>
-<main class="row">
+<main class="row" ng-controller="ProductSearchController">
 
 
 
@@ -50,7 +56,7 @@
   <div id="searchedTerm" class="text-primary bg-primary">You're searching for 'cho'</div>
   <span>
 Enter all or part of the description: </span>
-  <input name="search" type="text" id="search">
+  <input name="search" type="text" id="search" ng-model="searchString">
   <button id="go" class="btn btn-primary">Search</button>
   <span>
 Category:
@@ -75,7 +81,18 @@ Category:
       <div class="col-sm-2">Price</div>
     </div>
 
-    <div class="row">
+    <div class="row" ng-repeat="product in products">
+      <div class="col-sm-2"><a href="/app/product/productDetail.html">
+        <img class="img-responsive" ng-attr-src="/assets/img/ProductImages/{{product.productID}}.jpg"></a></div>
+      <div class="col-sm-5"><a href="/app/product/productDetail.html" class="ng-binding">
+        {{product.productName}}</a></div>
+      <div class="col-sm-3">
+        {{product.quantityPerUnit}}
+      </div>
+      <div class="col-sm-2">{{ product.unitPrice | currency:"USD$"}}</div>
+    </div>
+
+    <!-- <div class="row">
       <div class="col-sm-2"><a href="/app/product/productDetail.html"><img class="img-responsive" src="/assets/img/ProductImages/19.jpg"></a></div>
       <div class="col-sm-5"><a href="/app/product/productDetail.html">Teatime Chocolate Biscuits</a></div>
       <div class="col-sm-3">10 boxes x 12 pieces</div>
@@ -101,10 +118,10 @@ Category:
       <div class="col-sm-5"><a href="/app/product/productDetail.html">Chocolade</a></div>
       <div class="col-sm-3">10 pkgs.</div>
       <div class="col-sm-2">US$12.75</div>
-    </div>
+    </div> -->
 
     <div class="row">
-      <div class="text-success bg-success">4 products found.</div>
+      <div class="text-success bg-success">{{products.length}} products found.</div>
     </div>
 
   </div>
