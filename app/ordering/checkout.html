@@ -96,10 +96,34 @@
     <section ng-controller="ShipAddressController">
       <fieldset>
         <legend>Where shall we ship this?</legend>
+        {{shipAddressForm.$errors}}
+        Valid? {{shipAddressForm.$valid}}
+        InValid? {{shipAddressForm.$invalid}}
+        <br/>
+        Pristine? {{shipAddressForm.$pristine}}
+        Dirty? {{shipAddressForm.$dirty}}
+        <br/>
+        Touched? {{shipAddressForm.$touched}}
+        UnTouched? {{shipAddressForm.$untouched}}
+
         <form onsubmit="return false;" name="shipAddressForm">
           <div class="form-group has-feedback">
             <label for="shipName" class="control-label">Name to ship to:</label>
             <input name="shipName" class="form-control" maxlength="40"  pattern="^[\w' ]+$" required ng-model="customer.contactName"/>
+            <br/>
+            Required Error: {{shipAddressForm.shipName.$error.required}}<br/>
+            Pattern Error: {{shipAddressForm.shipName.$error.pattern}}<br/>
+            MaxLength Error: {{shipAddressForm.shipName.$error.maxlength}}<br/>
+            <br/>
+            Valid? {{shipAddressForm.shipName.$valid}}
+            InValid? {{shipAddressForm.shipName.$invalid}}
+            <br/>
+            Pristine? {{shipAddressForm.shipName.$pristine}}
+            Dirty? {{shipAddressForm.shipName.$dirty}}
+            <br/>
+            Touched? {{shipAddressForm.shipName.$touched}}
+            UnTouched? {{shipAddressForm.shipName.$untouched}}
+
           </div>
           <div class="form-group has-feedback">
             <label for="address" class="control-label">Address:</label>
@@ -108,6 +132,7 @@
           <div class="form-group has-feedback">
             <label for="city" class="control-label">City:</label>
             <input name="city" class="form-control" maxlength="15" required  ng-model="customer.city"/>
+            {{$}}
           </div>
           <div class="form-group has-feedback">
             <label for="region" class="control-label">Region/State:</label>
