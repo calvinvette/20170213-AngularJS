@@ -75,7 +75,7 @@
             <td style="text-align: right">Subtotal:</td>
             <td></td>
             <td></td>
-            <td style="border-top: 5px">{{cartTotal}}</td>
+            <td style="border-top: 5px">{{cartTotal | currency:"USD$":2}}</td>
           </tr>
         </tfoot>
         <tbody>
@@ -83,11 +83,11 @@
           <tr ng-repeat="item in cart track by $index">
             <td><img ng-attr-title="{{item.product.productId}}" ng-attr-src="/assets/img/productImages/{{item.product.productId}}.jpg"></td>
             <td><a ng-attr-href="/product/{{item.product.productId}}">{{item.product.name}}</a></td>
-            <td>{{item.product.price}}</td>
+            <td>{{item.product.price | currency:"USD$":2}}</td>
             <td>
               <input type="number" ng-model="item.quantity">
             </td>
-            <td>{{item.quantity * item.product.price}}</td>
+            <td>{{item.quantity * item.product.price | currency:"USD$":2}}</td>
             <td><a><span class="glyphicon glyphicon-trash" ng-click="removeFromCart(item.product)"></span></a></td>
           </tr>
         </tbody>
