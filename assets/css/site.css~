@@ -37,6 +37,6 @@ table#cartTable img {
 	color: #0070ff;
 }
 
-.has-error input {
+input.has-error {
 	color: #0070ff;
 }
