@@ -15,6 +15,6 @@
     $scope.$watch("customer", function() {
       console.log("Customer changed!");
       $scope.$emit("CustomerAddressChangedEvent", $scope.customer);
-    });
+    }, false); // true would do a "deep" watch; property by property
   }
 })();
