@@ -1,0 +1,292 @@
+
+
+http://todomvc.com/
+http://npmjs.org/
+
+
+
+
+
+
+Break until 11:55E/9:55M
+
+
+
+
+
+
+https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js
+
+
+https://github.com/rapPayne/AngularJSLabs
+
+http://mongodb.org
+https://www.mongodb.com/dr/fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.4.2-signed.msi/download
+
+
+
+
+Lab + Lunch until 2:45E/12:45M
+
+
+
+
+Lab 2 + Break until 4:30pm E / 2:30pm M
+
+Lab 2 PDF is in AngularJS-master/Setup/instructions
+
+I'll be listening in and monitoring the "Everyone" chat - feel free to 
+ask questions. (I will be muted though.)
+
+
+
+Exercise 3 until 10amE/8amM tomorrow
+I'll be here at least until 6pmE and back in about 9:30amE
+(but I will be muted - give me a second to grab my headset and unmute
+if you have any questions.)
+
+We'll get started with a quick debrief and move on to Section 4 at 10am.
+
+Break + Lab 4 until 12:00E/10:00M
+
+
+
+
+
+
+
+
+
+
+
+
+
+Lunch + Exercise 5 until 2:45
+I'll be here most of the time, but on mute
+I'll do my variation of the exercise and check it in to
+my github for this class
+
+https://github.com/calvinvette/20170213-AngularJS/
+
+Feel free to ask questions during the lunch/lab, but give
+me a minute to re-engage my headset if it's verbal.
+
+Break + Lab 6 until 5:15E/3:15M
+
+We'll finish up the day with Lab 6 - if/when you're done, take off
+We'll debrief at 10amE/8amM tomorrow, then move on to Chapter 7.
+
+I should be here until 6 and back in tomorrow about 9:30amE/7:30M for
+those who might have questions or need another pair of eyeballs on their code.
+
+Parts 1 & 2 & 3 have already been posted up to GitHub, Part 4 will be there later.
+I'll post in the chat window when I do.
+
+
+
+
+
+
+
+Break + Exercise 7 until ...
+
+at least 
+
+12:30E/10:30M
+
+
+
+
+
+
+
+
+
+Survey + Lunch until 2:25E/12:25M
+
+We'll start Ch 8 ("Filters") when we come back from lunch...
+
+
+Exercise 8 until about 3:30ish
+Let me know in the chat log when you're done or ready to move on.
+
+
+
+Break until 4:40E/2:40M
+Bring your questions at that time.
+
+
+
+
+Exercise 9 for the rest of the day. Take off when you're done.
+I'll be available to assist until 6pmE/4pmM.
+
+We'll debrief first thing tomorrow morning.
+
+
+
+REST:
+	Use ALL HTTP Verbs (methods) for the purpose they were originally intended
+	Use consistent, well-designed URLs
+	Content Negotiation (ConNeg) - XML, JSON, Tab-/CSV- delimitted, or other types
+
+
+
+http://myserver/myapp/rest/customers - all customers
+	GET http://myserver/myapp/rest/customers - retrieve all customers
+	PUT http://myserver/myapp/rest/customers - modify all customers
+	POST http://myserver/myapp/rest/customers - insert (into) all customers
+	DELETE http://myserver/myapp/rest/customers - delete all customers
+
+http://myserver/myapp/rest/customers/1234 - Specific customer (1234 == customerId)
+	GET http://myserver/myapp/rest/customers/1234 - retrieve Harry's record
+	PUT http://myserver/myapp/rest/customers/1234 - modify Harry's existing record
+	POST http://myserver/myapp/rest/customers/1234 - insert Harry's new record
+	DELETE http://myserver/myapp/rest/customers/1234 - delete Harry's record
+
+http://myserver/myapp/rest/customers/lastName/Weasley - represents all customers with lastName of Weasley
+	GET http://myserver/myapp/rest/customers/lastName/Weasley - retreive all Weasley
+
+http://myserver/myapp/rest/orders
+http://myserver/myapp/rest/products
+http://myserver/myapp/rest/addresses
+http://myserver/myapp/rest/shippingTypes
+
+
+Break until 12:15E/10:15M - Hold your questions until we get back.
+
+
+Lab 10 + Lunch until 2:15E/10:15M
+
+
+
+
+$resource
+Which url do you prefer? 
+This …
+
+http://tic.com/Report.aspx?t=Sales&y=2015&m=03
+
+… or this …
+
+http://tic.com/Sales/2015/3
+
+Why?
+
+
+
+Reasons
+
+SEO
+Easy to type
+Easy to remember
+Hides implementation stack
+URLs don’t have to change when the site changes.
+Hackable
+
+
+
+HI, I'm Roy Fielding, the inventor of REST.
+REST is ...
+an architectural style …
+for addressing resources …
+in a stateless environment …
+that reduces coupling
+
+
+A RESTful URL is one that conforms to all of the constraints
+
+Separation between client and server
+Stateless communication
+Cacheable
+A layered system
+A uniform interface
+
+
+Use HTTP methods to specify the action
+GET
+POST
+PUT
+DELETE
+
+
+
+The URL should act as an API
+
+GET http://tic.com/Customer
+POST http://tic.com/Customer
+GET http://tic.com/Customer/71
+PUT http://tic.com/Customer/71
+DELETE http://tic.com/Customer/71
+GET http://tic.com/Department
+GET http://tic.com/Employee
+POST http://tic.com/AddToCart/17
+
+
+
+
+
+RESTful requests are Ajax requests
+
+It  hits the same URL
+It does so multiple times
+The HTTP method (GET, POST, PUT, DELETE) reflects the intent
+
+$resource is built to handle that pattern
+
+
+
+
+$resource involves two phases
+
+1. Setup
+var xRequest = $resource(url);
+2. Running
+var x = xRequest.get(data)
+var x = xRequest.query(data)
+var x = xRequest.save(data)
+var x = xRequest.remove(data)
+var x = xRequest.delete(data)
+
+The setup is done once.  The running may happen over and over.
+
+
+
+
+
+
+$resource handles the async problem differently
+
+The methods immediately return an unpopulated object.  When the 200-series response hits, Angular populates that object with the data.
+So:
+Set up (var r = $resource('someUrl');)
+Make a .get()/.query()/.save()/.remove() call ($scope.foo = r.get({ somekey: somevalue});)
+foo is emptied, so the view clears all bindings
+We wait for a response from the server
+A 200 response hits.
+$scope.foo gets populated by Angular from the response
+foo is no longer empty, so the view is populated
+Much rejoicing occurs
+
+
+
+A $resource example
+
+app.controller('itemController', 
+function ($scope, itemService) {
+  $scope.readItem = function (id) {
+    $scope.item = itemService.get({'id':id});
+  };
+});
+
+When readItem(123) is called, the .get() immediately returns an empty item so $scope.item is blank which empties the fields on the view. 
+When the server returns a 200, Angular re-populates $scope.item with yummy data that it got from the server.
+
+
+
+
+
+
+
+
+
