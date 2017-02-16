@@ -7,8 +7,19 @@
   <script src="/app/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/app/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="/assets/css/site.css"/>
+
+  <script src="/app/node_modules/angular/angular.js"></script>
+
+  <script src="/app/shared/SharedModule.js"></script>
+  <script src="/app/product/ProductModule.js"></script>
+
+  <script src="/app/shared/CategoryService.js"></script>
+  <script src="/app/shared/ProductService.js"></script>
+  <script src="/app/shared/CartFactory.js"></script>
+
+  <script src="/app/product/ProductDetailController.js"></script>
 </head>
-<body class="container">
+<body class="container" ng-app="ProductModule">
 <div>
   <nav class="navbar navbar-default navbar-fixed-top">
     <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar">
@@ -41,26 +52,26 @@
     </h1>
   </header>
 </div>
-<main class="row">
+<main class="row" ng-controller="ProductDetailController">
   <div class="productDetail">
-    <h1>Thüringer Rostbratwurst</h1>
-    <img class="img-rounded" alt="Thüringer Rostbratwurst" src="/assets/img/productImages/29.jpg">
+    <h1>{{product.productName}}</h1>
+    <img class="img-rounded" ng-attr-alt="{{product.productName}}" ng-attr-src="/assets/img/productImages/{{product.productID}}.jpg">
 
     <p>
-      Category: Meat/Poultry
+      Category: {{product.categoryID}}
     </p>
 
     <p>
-      Sold in 50 bags x 30 sausages.
+      {{product.quantityPerUnit}}
     </p>
 
     <p>
-      Price: US$123.79
+      Price: {{product.price | currency:"USD$"}}
     </p>
   </div>
 
   <div id="addToCart">
-    <form>
+    <form ng-submit="addToCart(product, quantity)">
       <div class="form-group">
         <label for="quantity" class="control-label">Quantity:</label>
         <input name="quantity" type="number" value="1" id="quantity" class="form-control">
@@ -71,15 +82,7 @@
   <button class="btn btn-link">Back to list</button>
 </main>
 
-<footer class="row">
-  <span>Copyright © Northwind Traders</span>
-  <ul class="list-unstyled list-inline text-center">
-    <li><a href="https://www.facebook.com/pages/Northwind-Traders/101856779971208">Facebook</a></li>
-    <li><a href="https://twitter.com/NWTNews">Twitter</a></li>
-    <li><a href="https://www.linkedin.com/company/northwind-ventures-dba-northwind-technologies-?trk=company_logo">LinkedIn</a>
-    </li>
-  </ul>
-</footer>
+<div ng-include="'../shared/footer.html'"/>
 </body>
 
 </html>

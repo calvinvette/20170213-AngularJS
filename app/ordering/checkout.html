@@ -11,7 +11,14 @@
 
   <script src="/app/node_modules/angular/angular.js"></script>
 
+  <script src="/app/shared/SharedModule.js"></script>
+  <script src="/app/product/ProductModule.js"></script>
   <script src="/app/ordering/OrderingModule.js"></script>
+
+  <script src="/app/shared/CategoryService.js"></script>
+  <script src="/app/shared/ProductService.js"></script>
+  <script src="/app/shared/CartFactory.js"></script>
+
   <script src="/app/ordering/CheckoutController.js"></script>
   <script src="/app/ordering/ShipViaController.js"></script>
   <script src="/app/ordering/ShipAddressController.js"></script>
@@ -69,28 +76,28 @@
             <th>Extended Price</th>
           </tr>
         </thead>
+        <tbody>
+          <!-- ngRepeat: line in cart -->
+          <tr ng-repeat="item in cart track by $index">
+            <td><img ng-attr-title="{{item.product.productID}}" ng-attr-src="/assets/img/productImages/{{item.product.productID}}.jpg"></td>
+            <td><a ng-attr-href="/product/productDetail.html?{{item.product.productID}}">{{item.product.productName}}</a></td>
+            <td>{{item.product.unitPrice | currency:"USD$":2}}</td>
+            <td>
+              <input type="number" ng-model="item.quantity">
+            </td>
+            <td>{{item.quantity * item.product.unitPrice | currency:"USD$":2}}</td>
+            <td><a><span class="glyphicon glyphicon-trash" ng-click="removeFromCart(item.product)"></span></a></td>
+          </tr>
+        </tbody>
         <tfoot>
           <tr>
             <td></td>
             <td style="text-align: right">Subtotal:</td>
             <td></td>
             <td></td>
-            <td style="border-top: 5px">{{cartTotal | currency:"USD$":2}}</td>
+            <td style="border-top: 5px">{{cart.subtotal | currency:"USD$":2}}</td>
           </tr>
         </tfoot>
-        <tbody>
-          <!-- ngRepeat: line in cart -->
-          <tr ng-repeat="item in cart track by $index">
-            <td><img ng-attr-title="{{item.product.productId}}" ng-attr-src="/assets/img/productImages/{{item.product.productId}}.jpg"></td>
-            <td><a ng-attr-href="/product/{{item.product.productId}}">{{item.product.name}}</a></td>
-            <td>{{item.product.price | currency:"USD$":2}}</td>
-            <td>
-              <input type="number" ng-model="item.quantity">
-            </td>
-            <td>{{item.quantity * item.product.price | currency:"USD$":2}}</td>
-            <td><a><span class="glyphicon glyphicon-trash" ng-click="removeFromCart(item.product)"></span></a></td>
-          </tr>
-        </tbody>
       </table>
     </div>
     <section ng-controller="ShipAddressController">

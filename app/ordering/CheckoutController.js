@@ -1,24 +1,15 @@
 (function() {
   angular.module("OrderingModule").controller("CheckoutController", CheckoutController);
-  CheckoutController.$inject = ['$scope'];
+  CheckoutController.$inject = ['$scope', 'CartFactory'];
   // console.log("CheckoutController assigned");
-  function CheckoutController($scope) {
+  function CheckoutController($scope, CartFactory) {
     console.log("CheckoutController Loaded");
-    $scope.cart = [ {
-      product : {
-        productId : 1,
-        name : "Bertie Bott's Every Flavoured Beans",
-        price : 1.5
-      },
-      quantity : 4
-    },{
-      product : {
-        productId : 7,
-        name : "Exploding Fake Wand",
-        price : 7.75
-      },
-      quantity : 2
-    }];
+    $scope.cart = CartFactory.cart;
+    //CartFactory.dumpCart();
+    console.log("Cart:");
+    $scope.cart.forEach((item) => console.log(item.product.productName + ", " + item.quantity));
+    console.log("Total: " + $scope.cart.subtotal);
+
     $scope.cartTotal = 0;
     $scope.shipVia = null;
     $scope.$watch('cart', function() {
@@ -61,11 +52,12 @@
   }
 
   function getCartTotal(cart) {
-    var sum = 0;
-    for (var idx in cart) {
-      sum += cart[idx].quantity * cart[idx].product.price;
-    }
-    return sum;
+    // var sum = 0;
+    // for (var idx in cart) {
+    //   sum += cart[idx].quantity * cart[idx].product.price;
+    // }
+    // return sum;
+    return cart.subtotal;
   }
   // console.log("CheckoutController End IIFE");
 })();

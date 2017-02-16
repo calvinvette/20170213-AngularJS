@@ -4,9 +4,12 @@
   function ProductService($http) {
     console.log("ProductService Loaded.");
 
-
     this.getProducts = function() {
       return $http({url:'/api/product'});
     };
+
+    this.getProduct = function(productID) {
+      return $http({url:'/api/product/' + productID});
+    }
   }
 })();
