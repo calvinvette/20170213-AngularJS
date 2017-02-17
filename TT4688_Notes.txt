@@ -286,6 +286,21 @@ When the server returns a 200, Angular re-populates $scope.item with yummy data 
 
 
 
+Exercise 11+Break until about 4:30E/2:30M	
+We'll debrief at 4:30 regardless. 
+
+
+Exercise 12 for the rest of the day. Take off when you're done.
+
+Tomorrow @10amE/8amM
+Debrief 12
+SPA, Routing, Batarang, Directives
+Optional:
+Angular 2 preview
+Model Driven Engineering (with JBoss Forge)
+
+
+
 
 
 

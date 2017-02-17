@@ -10,11 +10,8 @@
     $scope.cart.forEach((item) => console.log(item.product.productName + ", " + item.quantity));
     console.log("Total: " + $scope.cart.subtotal);
 
-    $scope.cartTotal = 0;
     $scope.shipVia = null;
-    $scope.$watch('cart', function() {
-      $scope.cartTotal = getCartTotal($scope.cart);
-    }, true);
+
     $scope.$on("ShipViaChangeEvent", function(evt, data) {
       // console.log("Got shipViaChange!");
       // console.log(evt);
